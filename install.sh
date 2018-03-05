@@ -5,31 +5,31 @@
 # Generar imatge postgres:base
 # -----------------------------
 
-mkdir /opt/docker
+# mkdir /opt/docker
 
 # -------------------
-# Instal·lar softwae
+# InstalÂ·lar softwae
 # -------------------
-dnf -y update vi
-dnf -y install vim postgresql postgresql-server postgresql-libs rpcbind passwd
-dnf -y install findutils
-dnf -y install nmap procps iputils iproute
+# dnf -y update vi
+# dnf -y install vim postgresql postgresql-server postgresql-libs rpcbind passwd
+# dnf -y install findutils
+# dnf -y install nmap procps iputils iproute
 
-mkdir /run/rpcbind 
-touch /run/rpcbind/rpcbind.lock
-/usr/sbin/rpcbind 
+# mkdir /run/rpcbind 
+# touch /run/rpcbind/rpcbind.lock
+# /usr/sbin/rpcbind 
 
 # --------------------------------------
-# Configurar per permetre l'accés remo
+# Configurar per permetre l'accÃ©s remo
 # --------------------------------------
-vim /var/lib/pgsql/data/pg_hba.conf
+# vim /var/lib/pgsql/data/pg_hba.conf
   # IPv4 local connections:
-  host    all             all             127.0.0.1/32            trust
-  host    all             all             172.17.0.2/32           trust
-  host    all             all             0.0.0.0/0               trust
+#   host    all             all             127.0.0.1/32            trust
+#   host    all             all             172.17.0.2/32           trust
+#   host    all             all             0.0.0.0/0               trust
 
-vim /var/lib/pgsql/data/postgresql.conf 
- listen_addresses='*'
+# vim /var/lib/pgsql/data/postgresql.conf 
+ # listen_addresses='*'
 
 # --------------------------
 # Configurar compte postgres 
@@ -39,7 +39,7 @@ useradd edtasixm06
 echo "edtasixm06" | passwd --stdin edtasixm06
 
 # ----------------------------
-# Sessió com a usuari postgres
+# SessiÃ³ com a usuari postgres
 # engegar el servei
 # ----------------------------
 su -l postgres
@@ -78,16 +78,16 @@ grant ALL on oficinas, pedidos, productos, repventas, clientes to edtasixm06;
 
 \q
 psql training
-\i /opt/docker/training/pedidos.sql
-\i /opt/docker/training/productos.sql
-\i /opt/docker/training/clientes.sql
-\i /opt/docker/training/repventas.sql
+\i /opt/docker/pedidos.sql
+\i /opt/docker/productos.sql
+\i /opt/docker/clientes.sql
+\i /opt/docker/repventas.sql
 
-\copy pedidos from /opt/docker/training/pedidos.dat 
-\copy productos from /opt/docker/training/productos.dat 
-\copy clientes from /opt/docker/training/clientes.dat  
-\copy repventas from /opt/docker/training/repventas.dat 
-\copy oficinas from /opt/docker/training/oficinas.dat  
+\copy pedidos from /opt/docker/pedidos.dat 
+\copy productos from /opt/docker/productos.dat 
+\copy clientes from /opt/docker/clientes.dat  
+\copy repventas from /opt/docker/repventas.dat 
+\copy oficinas from /opt/docker/oficinas.dat  
 
 
 # --------------------------------------------
@@ -101,8 +101,8 @@ create database training;
 # ----------------
 # Exemples d'acces
 # ----------------
-psql -qtA -F ';' training
-psql -qtA -F ';' training -c "select * from oficinas";
-psql -U edtasixm06 training -c "select *  from clientes;"
-psql -h localhost -U edtasixm06 training -c "select *  from clientes;"
-psql -h 172.17.0.2 -U edtasixm06 training -c "select *  from clientes;"
+# psql -qtA -F ';' training
+# psql -qtA -F ';' training -c "select * from oficinas";
+# psql -U edtasixm06 training -c "select *  from clientes;"
+# psql -h localhost -U edtasixm06 training -c "select *  from clientes;"
+# psql -h 172.17.0.2 -U edtasixm06 training -c "select *  from clientes;"
