@@ -14,8 +14,8 @@ RUN dnf -y install vim procps iputils iproute tree nmap mlocate man-db \
 COPY install.sh /opt/docker/
 COPY startup.sh /opt/docker/
 
-COPY pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
-COPY postgresql.conf /var/lib/pgsql/data/postgresql.conf
+COPY pg_hba.conf /var/lib/pgsql/data/
+COPY postgresql.conf /var/lib/pgsql/data/
 
 COPY training/* /opt/docker/ 
 
