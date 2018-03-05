@@ -4,7 +4,7 @@
 # ----------------------------------
 
 FROM fedora:24
-MAINTAINER @isx45128227 "@edt ASIX M11 Curs 2017-2018"
+MAINTAINER @isx45128227 "Roger Ferran @edt Curs 2017-2018"
 RUN mkdir /opt/docker/
 
 RUN dnf -y update vi
