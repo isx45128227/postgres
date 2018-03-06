@@ -17,25 +17,30 @@ USER postgres
 # then create a database `training` owned by the ``postgres`` role.
 # Note: here we use ``&&\`` to run commands one after the other - the ``\``
 #       allows the RUN command to span multiple lines.
-RUN    /etc/init.d/postgresql start &&\
-    psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'jupiter';" &&\
-    createdb -O training postgres
-
+# RUN    /etc/init.d/postgresql start &&\
+#    psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'jupiter';" 
+    # createdb -O postgres training
+    
 COPY pg_hba.conf /var/lib/pgsql/data/
 COPY postgresql.conf /var/lib/pgsql/data/
 
 # Expose the PostgreSQL port
 EXPOSE 5432
 
-COPY training/* /opt/docker/ 
+COPY training/* /opt/docker/
+COPY install.sh /opt/docker/ 
+COPY startup.sh /opt/docker/ 
+
+RUN chmod +x /opt/docker/install.sh /opt/docker/startup.sh
 
 WORKDIR /opt/docker
 
 CMD ["/usr/sbin/rpcbind "]
-
+CMD ["/opt/docker/install.sh"]
+CMD ["/opt/docker/startup.sh"]
 
 # Set the default command to run when starting the container
 # CMD ["/usr/lib/postgresql/9.3/bin/postgres", "-D", "/var/lib/postgresql/9.3/main", "-c", "config_file=/etc/postgresql/9.3/main/postgresql.conf"]
-CMD ["/usr/bin/pg_ctl","-D","/var/lib/pgsql/data","-l","logfile","start"]
+# CMD ["/usr/bin/pg_ctl","-D","/var/lib/pgsql/data","-l","logfile","start"]
 
 ## Per connectar-se --> psql -h localhost -p PORTQUETOQUI -d training -U postgres --password
