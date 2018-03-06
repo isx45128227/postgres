@@ -4,13 +4,11 @@
 #### Passos:
     docker run --name postgres -h postgres -d isx45128227/postgres
     
-    docker start postgres
-    
     # Per accedir a dins
       docker exec -it postgres /bin/bash
     
     # Per veure dades de training
-      psql -h localhost -p 5432 -U docker -d training
+      psql -h localhost -p 5432 -U docker -d training -c 'SELECT * FROM PEDIDOS;'
       \d 
       SELECT * FROM pedidos;
       SHOW hba_file;
