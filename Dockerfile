@@ -8,4 +8,6 @@ ENV POSTGRES_USER docker
 ENV POSTGRES_PASSWORD jupiter
 ENV POSTGRES_DB training
 #COPY pg_hba.conf /var/lib/postgresql/data/
+RUN echo "host    all             all             172.17.0.2/32           trust" >> /var/lib/postgresql/data/pg_hba.conf
+RUN echo "host    all             all             0.0.0.0/0               trust" >> /var/lib/postgresql/data/pg_hba.conf
 ADD training/script-training.sql /docker-entrypoint-initdb.d/
