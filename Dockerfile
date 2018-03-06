@@ -11,7 +11,7 @@ RUN dnf -y update vi
 RUN dnf -y install vim procps iputils iproute tree nmap mlocate man-db \
                    postgresql postgresql-server postgresql-libs rpcbind passwd findutils
                    
-USER postgres
+# USER postgres
 
 # Create a PostgreSQL role named ``postgres`` with ``jupiter`` as the password and
 # then create a database `training` owned by the ``postgres`` role.
