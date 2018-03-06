@@ -1,25 +1,4 @@
 -- CREAR TRAINING
-
-CREATE USER postgres;
-CREATE DATABASE training;
-GRANT ALL PRIVILEGES ON DATABASE training TO postgres;
-
--- \c training
-
-
-SET statement_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = off;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET escape_string_warning = off;
-
-SET search_path = public, pg_catalog;
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
 --
 -- Name: clientes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
@@ -31,8 +10,6 @@ CREATE TABLE clientes (
     limite_credito numeric(8,2)
 );
 
-
-ALTER TABLE public.clientes OWNER TO postgres;
 
 --
 -- Name: oficinas; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -47,8 +24,6 @@ CREATE TABLE oficinas (
     ventas numeric(9,2) NOT NULL
 );
 
-
-ALTER TABLE public.oficinas OWNER TO postgres;
 
 --
 -- Name: pedidos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -66,8 +41,6 @@ CREATE TABLE pedidos (
 );
 
 
-ALTER TABLE public.pedidos OWNER TO postgres;
-
 --
 -- Name: productos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
@@ -80,8 +53,6 @@ CREATE TABLE productos (
     existencias integer NOT NULL
 );
 
-
-ALTER TABLE public.productos OWNER TO postgres;
 
 --
 -- Name: repventas; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -99,8 +70,6 @@ CREATE TABLE repventas (
     ventas numeric(8,2) NOT NULL
 );
 
-
-ALTER TABLE public.repventas OWNER TO postgres;
 
 --
 -- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -271,68 +240,3 @@ ALTER TABLE ONLY productos
 
 ALTER TABLE ONLY repventas
     ADD CONSTRAINT repventas_pkey PRIMARY KEY (num_empl);
-
-
---
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- Name: clientes; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE clientes FROM PUBLIC;
-REVOKE ALL ON TABLE clientes FROM postgres;
-GRANT ALL ON TABLE clientes TO postgres;
-GRANT SELECT ON TABLE clientes TO PUBLIC;
-
-
---
--- Name: oficinas; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE oficinas FROM PUBLIC;
-REVOKE ALL ON TABLE oficinas FROM postgres;
-GRANT ALL ON TABLE oficinas TO postgres;
-GRANT SELECT ON TABLE oficinas TO PUBLIC;
-
-
---
--- Name: pedidos; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE pedidos FROM PUBLIC;
-REVOKE ALL ON TABLE pedidos FROM postgres;
-GRANT ALL ON TABLE pedidos TO postgres;
-GRANT SELECT ON TABLE pedidos TO PUBLIC;
-
-
---
--- Name: productos; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE productos FROM PUBLIC;
-REVOKE ALL ON TABLE productos FROM postgres;
-GRANT ALL ON TABLE productos TO postgres;
-GRANT SELECT ON TABLE productos TO PUBLIC;
-
-
---
--- Name: repventas; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE repventas FROM PUBLIC;
-REVOKE ALL ON TABLE repventas FROM postgres;
-GRANT ALL ON TABLE repventas TO postgres;
-GRANT SELECT ON TABLE repventas TO PUBLIC;
-
-
---
--- PostgreSQL database dump complete
---
