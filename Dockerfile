@@ -9,7 +9,7 @@ RUN mkdir /opt/docker/
 
 RUN dnf -y update vi
 RUN dnf -y install vim procps iputils iproute tree nmap mlocate man-db \
-                   postgresql postgresql-server postgresql-libs rpcbind passwd findutils
+                   postgresql-server passwd findutils
                    
 # USER postgres
 
