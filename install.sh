@@ -3,34 +3,7 @@
 # @edt ASIX-M11 Curs 2017-2018
 # postgres:base
 # -----------------------------
-postgresql-setup initdb
-systemctl start postgresql
-systemctl enable postgresql
-echo "jupiter" | passwd --stdin postgres
 
-su -l postgres
-
-psql template1
-CREATE USER roger;
-
-CREATE DATABASE training;
-GRANT ALL ON DATABASE training to roger;
-GRANT ALL ON oficinas, pedidos, productos, repventas, clientes to roger;
-
-\c training
-
-\i /opt/docker/pedidos.sql
-\i /opt/docker/productos.sql
-\i /opt/docker/clientes.sql
-\i /opt/docker/repventas.sql
-
-\copy pedidos from /opt/docker/pedidos.dat 
-\copy productos from /opt/docker/productos.dat 
-\copy clientes from /opt/docker/clientes.dat  
-\copy repventas from /opt/docker/repventas.dat 
-\copy oficinas from /opt/docker/oficinas.dat  
-
-\q
 
 
 # --------------------------
