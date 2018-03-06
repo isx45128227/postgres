@@ -1,4 +1,11 @@
-## CREAR TRAINING
+-- CREAR TRAINING
+
+CREATE USER postgres;
+CREATE DATABASE training;
+GRANT ALL PRIVILEGES ON DATABASE training TO postgres;
+
+-- \c training
+
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
