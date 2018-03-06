@@ -31,7 +31,8 @@ COPY training/* /opt/docker/
 COPY install.sh /opt/docker/ 
 COPY startup.sh /opt/docker/ 
 
-RUN chmod +x /opt/docker/install.sh /opt/docker/startup.sh
+RUN chmod +x /opt/docker/install.sh
+RUN chmod +x /opt/docker/startup.sh
 
 WORKDIR /opt/docker
 
