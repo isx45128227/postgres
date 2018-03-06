@@ -7,6 +7,7 @@
 # --------------------------
 # Configurar compte 
 # --------------------------
+echo "jupiter" | passwd --stdin postgres
 useradd roger
 echo "roger" | passwd --stdin roger
 
