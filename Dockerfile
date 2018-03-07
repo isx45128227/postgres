@@ -4,6 +4,7 @@
 # ----------------------------------
 
 FROM postgres:9.3
+MAINTAINER @isx45128227 "Roger Ferran @edt Curs 2017-2018"
 ENV POSTGRES_USER docker
 ENV POSTGRES_PASSWORD jupiter
 ENV POSTGRES_DB training
