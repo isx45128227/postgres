@@ -11,5 +11,7 @@
       psql -h localhost -p 5432 -U docker -d training -c 'SELECT * FROM PEDIDOS;'
       \d 
       SELECT * FROM pedidos;
+      
       SHOW hba_file;
+      
       SHOW config_file;
