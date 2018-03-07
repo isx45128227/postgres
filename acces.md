@@ -1,5 +1,3 @@
-#! /bin/bash
-# install.sh
 # @edt ASIX-M11 Curs 2017-2018
 # postgres:base
 # -----------------------------
